@@ -130,173 +130,38 @@ header.app-header {
 <div class="stats">
   <div class="stat-item"><div class="stat-label">Sectors</div><div class="stat-value">20</div></div>
   <div class="stat-item"><div class="stat-label">💚 Hell-Yes</div><div class="stat-value darkgreen">1</div></div>
-  <div class="stat-item"><div class="stat-label">🟢 Strong</div><div class="stat-value green">4</div></div>
-  <div class="stat-item"><div class="stat-label">🟡 Conditional</div><div class="stat-value yellow">9</div></div>
-  <div class="stat-item"><div class="stat-label">🔴 Pass</div><div class="stat-value red">6</div></div>
-  <div class="stat-item"><div class="stat-label">⚫ KILL</div><div class="stat-value gray">0</div></div>
-  <div class="stat-item"><div class="stat-label">Top sector Δ pp</div><div class="stat-value green">+7.5</div><div style="font-size:11px;color:#777;margin-top:2px">Administrative Support, W</div></div>
+  <div class="stat-item"><div class="stat-label">🟢 Strong</div><div class="stat-value green">0</div></div>
+  <div class="stat-item"><div class="stat-label">🟡 Conditional</div><div class="stat-value yellow">2</div></div>
+  <div class="stat-item"><div class="stat-label">🔴 Pass</div><div class="stat-value red">14</div></div>
+  <div class="stat-item"><div class="stat-label">⚫ KILL</div><div class="stat-value gray">3</div></div>
+  <div class="stat-item"><div class="stat-label">Top sector Δ pp</div><div class="stat-value green">+6.5</div><div style="font-size:11px;color:#777;margin-top:2px">Health Care and Social As</div></div>
 </div>
 <div class="sources-bar">
   <strong>Sources (public):</strong>
   Revenue + Payroll + Firms: <a href="https://www2.census.gov/programs-surveys/economic-census/data/2022/">Census Economic Census 2022</a> ·
   Cost structure: BEA Industry Accounts · Agriculture: USDA Cash Receipts ·
   AI productivity: <a href="https://github.com/s-mahdihosseini/GenAI_Expertise">GenAI Expertise</a> ·
-  AI directive %: <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">Anthropic Economic Index</a> ·
-  Wage savings = wages × productivity_effect × directive_pct
+  Capture share C: APQC π_dist × π_moat (from <a href="https://lisaivanchikova.github.io/rollup-economy/">rollup-economy</a>) ·
+  <strong>Wage savings = wages × productivity_effect × capture_share</strong> (formula corrected per Exp 2 deep-dive)
 </div>
 <div class="content">
   <div id="summary-view">
     <div class="cards-grid">
-    <div class="sector-card" data-sec="56" onclick="showSector('56')">
-      <div class="card-header" style="background:#0d652d;color:#fff">
-        <div class="card-naics">56</div>
-        <div class="card-verdict">💚 Hell-Yes</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Administrative Support</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#0d652d;font-weight:800;font-size:22px">+7.5 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">22.6% → 30.2%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$3.53M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−3.7 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sector-card" data-sec="55" onclick="showSector('55')">
-      <div class="card-header" style="background:#34d058;color:#0a0a0a">
-        <div class="card-naics">55</div>
-        <div class="card-verdict">🟢 Strong</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Management of Companies and Enterprises</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#34d058;font-weight:800;font-size:22px">+5.5 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">28.0% → 33.5%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$4.17M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−2.4 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sector-card" data-sec="54" onclick="showSector('54')">
-      <div class="card-header" style="background:#34d058;color:#0a0a0a">
-        <div class="card-naics">54</div>
-        <div class="card-verdict">🟢 Strong</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Professional</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#34d058;font-weight:800;font-size:22px">+5.3 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">21.7% → 26.9%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$3.04M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−2.2 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sector-card" data-sec="92" onclick="showSector('92')">
-      <div class="card-header" style="background:#34d058;color:#0a0a0a">
-        <div class="card-naics">92</div>
-        <div class="card-verdict">🟢 Strong</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Public Administration</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#34d058;font-weight:800;font-size:22px">+5.1 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">37.4% → 42.5%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$75.00M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−1.9 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sector-card" data-sec="51" onclick="showSector('51')">
-      <div class="card-header" style="background:#34d058;color:#0a0a0a">
-        <div class="card-naics">51</div>
-        <div class="card-verdict">🟢 Strong</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Information</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#34d058;font-weight:800;font-size:22px">+4.4 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">21.6% → 26.0%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$24.12M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−1.4 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="sector-card" data-sec="62" onclick="showSector('62')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
+      <div class="card-header" style="background:#0d652d;color:#fff">
         <div class="card-naics">62</div>
-        <div class="card-verdict">🟡 Conditional</div>
+        <div class="card-verdict">💚 Hell-Yes</div>
       </div>
       <div class="card-body">
         <div class="card-name">Health Care and Social Assistance</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+4.0 pp</div>
+            <div class="card-stat-value" style="color:#0d652d;font-weight:800;font-size:22px">+6.5 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">21.7% → 25.7%</div>
+            <div class="card-stat-value">21.7% → 28.3%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -304,7 +169,7 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−1.7 pp</div>
+            <div class="card-stat-value">−5.1 pp</div>
           </div>
         </div>
       </div>
@@ -319,11 +184,11 @@ header.app-header {
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+3.9 pp</div>
+            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.4 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">43.7% → 47.6%</div>
+            <div class="card-stat-value">43.7% → 46.1%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -331,84 +196,57 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.9 pp</div>
+            <div class="card-stat-value">−1.4 pp</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="sector-card" data-sec="81" onclick="showSector('81')">
+    <div class="sector-card" data-sec="54" onclick="showSector('54')">
       <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
-        <div class="card-naics">81</div>
+        <div class="card-naics">54</div>
         <div class="card-verdict">🟡 Conditional</div>
       </div>
       <div class="card-body">
-        <div class="card-name">Other Services (except Public Administration)</div>
+        <div class="card-name">Professional</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+3.7 pp</div>
+            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.4 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">26.3% → 30.0%</div>
+            <div class="card-stat-value">21.7% → 24.0%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$1.36M</div>
+            <div class="card-stat-value">$3.04M</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−1.1 pp</div>
+            <div class="card-stat-value">−2.1 pp</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="sector-card" data-sec="53" onclick="showSector('53')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
-        <div class="card-naics">53</div>
-        <div class="card-verdict">🟡 Conditional</div>
+    <div class="sector-card" data-sec="22" onclick="showSector('22')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">22</div>
+        <div class="card-verdict">🔴 Pass</div>
       </div>
       <div class="card-body">
-        <div class="card-name">Real Estate</div>
+        <div class="card-name">Utilities</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.9 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.8 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">13.4% → 16.3%</div>
+            <div class="card-stat-value">19.5% → 21.3%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$2.57M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.8 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sector-card" data-sec="71" onclick="showSector('71')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
-        <div class="card-naics">71</div>
-        <div class="card-verdict">🟡 Conditional</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Arts</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.7 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">9.4% → 12.1%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$2.32M</div>
+            <div class="card-stat-value">$104.72M</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
@@ -417,48 +255,21 @@ header.app-header {
         </div>
       </div>
     </div>
-    <div class="sector-card" data-sec="44-45" onclick="showSector('44-45')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
-        <div class="card-naics">44-45</div>
-        <div class="card-verdict">🟡 Conditional</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Retail Trade</div>
-        <div class="card-stats">
-          <div class="card-stat">
-            <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.5 pp</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">8.2% → 10.8%</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$10.83M</div>
-          </div>
-          <div class="card-stat">
-            <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.4 pp</div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="sector-card" data-sec="23" onclick="showSector('23')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
+      <div class="card-header" style="background:#f85149;color:#fff">
         <div class="card-naics">23</div>
-        <div class="card-verdict">🟡 Conditional</div>
+        <div class="card-verdict">🔴 Pass</div>
       </div>
       <div class="card-body">
         <div class="card-name">Construction</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.5 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.6 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">11.9% → 14.3%</div>
+            <div class="card-stat-value">11.9% → 13.5%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -466,26 +277,107 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.3 pp</div>
+            <div class="card-stat-value">−1.2 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="81" onclick="showSector('81')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">81</div>
+        <div class="card-verdict">🔴 Pass</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Other Services (except Public Administration)</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.2 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">26.3% → 27.5%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$1.36M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−1.0 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="51" onclick="showSector('51')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">51</div>
+        <div class="card-verdict">🔴 Pass</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Information</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.1 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">21.6% → 22.7%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$24.12M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−1.0 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="56" onclick="showSector('56')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">56</div>
+        <div class="card-verdict">🔴 Pass</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Administrative Support</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.0 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">22.6% → 23.7%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$3.53M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−1.1 pp</div>
           </div>
         </div>
       </div>
     </div>
     <div class="sector-card" data-sec="31-33" onclick="showSector('31-33')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
+      <div class="card-header" style="background:#f85149;color:#fff">
         <div class="card-naics">31-33</div>
-        <div class="card-verdict">🟡 Conditional</div>
+        <div class="card-verdict">🔴 Pass</div>
       </div>
       <div class="card-body">
         <div class="card-name">Manufacturing</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.2 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.8 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">7.8% → 10.0%</div>
+            <div class="card-stat-value">7.8% → 8.6%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -493,34 +385,61 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.2 pp</div>
+            <div class="card-stat-value">−0.6 pp</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="sector-card" data-sec="22" onclick="showSector('22')">
-      <div class="card-header" style="background:#f9c84a;color:#0a0a0a">
-        <div class="card-naics">22</div>
-        <div class="card-verdict">🟡 Conditional</div>
+    <div class="sector-card" data-sec="21" onclick="showSector('21')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">21</div>
+        <div class="card-verdict">🔴 Pass</div>
       </div>
       <div class="card-body">
-        <div class="card-name">Utilities</div>
+        <div class="card-name">Mining</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f9c84a;font-weight:800;font-size:22px">+2.2 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.5 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">19.5% → 21.7%</div>
+            <div class="card-stat-value">24.1% → 24.7%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$104.72M</div>
+            <div class="card-stat-value">$45.15M</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
             <div class="card-stat-value">−0.3 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="53" onclick="showSector('53')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">53</div>
+        <div class="card-verdict">🔴 Pass</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Real Estate</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.5 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">13.4% → 13.9%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$2.57M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−0.5 pp</div>
           </div>
         </div>
       </div>
@@ -535,11 +454,11 @@ header.app-header {
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.8 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.5 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">31.8% → 33.6%</div>
+            <div class="card-stat-value">31.8% → 32.3%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -547,7 +466,34 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.9 pp</div>
+            <div class="card-stat-value">−0.7 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="71" onclick="showSector('71')">
+      <div class="card-header" style="background:#f85149;color:#fff">
+        <div class="card-naics">71</div>
+        <div class="card-verdict">🔴 Pass</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Arts</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.5 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">9.4% → 9.8%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$2.32M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−0.7 pp</div>
           </div>
         </div>
       </div>
@@ -562,11 +508,11 @@ header.app-header {
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.8 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.3 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">13.2% → 14.9%</div>
+            <div class="card-stat-value">13.2% → 13.4%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -589,11 +535,11 @@ header.app-header {
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.7 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.2 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">7.7% → 9.4%</div>
+            <div class="card-stat-value">7.7% → 7.9%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -601,7 +547,7 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.1 pp</div>
+            <div class="card-stat-value">−0.2 pp</div>
           </div>
         </div>
       </div>
@@ -616,11 +562,11 @@ header.app-header {
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.6 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.1 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">9.0% → 10.6%</div>
+            <div class="card-stat-value">9.0% → 9.1%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -628,53 +574,53 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.6 pp</div>
+            <div class="card-stat-value">−0.4 pp</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="sector-card" data-sec="21" onclick="showSector('21')">
+    <div class="sector-card" data-sec="44-45" onclick="showSector('44-45')">
       <div class="card-header" style="background:#f85149;color:#fff">
-        <div class="card-naics">21</div>
+        <div class="card-naics">44-45</div>
         <div class="card-verdict">🔴 Pass</div>
       </div>
       <div class="card-body">
-        <div class="card-name">Mining</div>
+        <div class="card-name">Retail Trade</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.5 pp</div>
+            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+0.0 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">24.1% → 25.6%</div>
+            <div class="card-stat-value">8.2% → 8.3%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
-            <div class="card-stat-value">$45.15M</div>
+            <div class="card-stat-value">$10.83M</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.1 pp</div>
+            <div class="card-stat-value">−0.2 pp</div>
           </div>
         </div>
       </div>
     </div>
     <div class="sector-card" data-sec="72" onclick="showSector('72')">
-      <div class="card-header" style="background:#f85149;color:#fff">
+      <div class="card-header" style="background:#3a3a3a;color:#fff">
         <div class="card-naics">72</div>
-        <div class="card-verdict">🔴 Pass</div>
+        <div class="card-verdict">⚫ KILL</div>
       </div>
       <div class="card-body">
         <div class="card-name">Accommodation and Food Services</div>
         <div class="card-stats">
           <div class="card-stat">
             <div class="card-stat-label">EBITDA Δ</div>
-            <div class="card-stat-value" style="color:#f85149;font-weight:800;font-size:22px">+1.0 pp</div>
+            <div class="card-stat-value" style="color:#3a3a3a;font-weight:800;font-size:22px">-0.2 pp</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Before → After</div>
-            <div class="card-stat-value">16.6% → 17.6%</div>
+            <div class="card-stat-value">16.6% → 16.4%</div>
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Median firm rev</div>
@@ -682,7 +628,61 @@ header.app-header {
           </div>
           <div class="card-stat">
             <div class="card-stat-label">Wages saved</div>
-            <div class="card-stat-value">−0.5 pp</div>
+            <div class="card-stat-value">−0.2 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="55" onclick="showSector('55')">
+      <div class="card-header" style="background:#3a3a3a;color:#fff">
+        <div class="card-naics">55</div>
+        <div class="card-verdict">⚫ KILL</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Management of Companies and Enterprises</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#3a3a3a;font-weight:800;font-size:22px">-0.5 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">28.0% → 27.5%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$4.17M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−0.0 pp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sector-card" data-sec="92" onclick="showSector('92')">
+      <div class="card-header" style="background:#3a3a3a;color:#fff">
+        <div class="card-naics">92</div>
+        <div class="card-verdict">⚫ KILL</div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">Public Administration</div>
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">EBITDA Δ</div>
+            <div class="card-stat-value" style="color:#3a3a3a;font-weight:800;font-size:22px">-0.5 pp</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Before → After</div>
+            <div class="card-stat-value">37.4% → 36.9%</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Median firm rev</div>
+            <div class="card-stat-value">$75.00M</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Wages saved</div>
+            <div class="card-stat-value">−0.0 pp</div>
           </div>
         </div>
       </div>
@@ -695,7 +695,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f85149;color:#fff">11</span>
           Agriculture, Forestry, Fishing
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.8 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.3 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -708,10 +708,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$543.00B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>13.1%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>23.5%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 10.8% × 13.1% × 23.5% = 0.33 pp</strong>
+          capture_share C = <strong>0.23</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 23.5% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 10.8% × 13.1% × 0.23 = 0.32 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -721,7 +723,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.0%</span></td><td class="pnl-num">102.0%</td><td class="pnl-num">$4.84M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.3pp</span></td><td class="pnl-num">10.5%</td><td class="pnl-num">$498.8K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">50.0%</td><td class="pnl-num">$2.37M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">4.0%</td><td class="pnl-num">$189.8K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">10.0%</td><td class="pnl-num">$474.5K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$47.5K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$71.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$474.5K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.8 pp</span></td><td class="pnl-num">14.9%</td><td class="pnl-num">$709.3K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.4%</span></td><td class="pnl-num">100.4%</td><td class="pnl-num">$4.77M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.3pp</span></td><td class="pnl-num">10.5%</td><td class="pnl-num">$499.3K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">50.0%</td><td class="pnl-num">$2.37M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">4.0%</td><td class="pnl-num">$189.8K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">10.0%</td><td class="pnl-num">$474.5K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$47.5K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$71.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$474.5K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.3 pp</span></td><td class="pnl-num">13.4%</td><td class="pnl-num">$636.9K</td></tr></table>
         </div>
       </div>
     </div>
@@ -731,7 +733,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f85149;color:#fff">21</span>
           Mining, Oil and Gas
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.5 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -744,10 +746,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$725.14B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>12.5%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>11.8%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 6.9% × 12.5% × 11.8% = 0.10 pp</strong>
+          capture_share C = <strong>0.38</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 11.8% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 6.9% × 12.5% × 0.38 = 0.33 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -757,7 +761,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.9%</span></td><td class="pnl-num">101.9%</td><td class="pnl-num">$46.00M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.1pp</span></td><td class="pnl-num">6.8%</td><td class="pnl-num">$3.05M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">35.0%</td><td class="pnl-num">$15.80M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$1.35M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$8.13M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$451.5K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$1.13M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$4.52M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.5 pp</span></td><td class="pnl-num">25.6%</td><td class="pnl-num">$11.57M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.7%</span></td><td class="pnl-num">100.7%</td><td class="pnl-num">$45.47M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.3pp</span></td><td class="pnl-num">6.5%</td><td class="pnl-num">$2.95M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">35.0%</td><td class="pnl-num">$15.80M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$1.35M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$8.13M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$451.5K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$1.13M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$4.52M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.5 pp</span></td><td class="pnl-num">24.7%</td><td class="pnl-num">$11.14M</td></tr></table>
         </div>
       </div>
     </div>
@@ -765,9 +769,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">22</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">22</span>
           Utilities
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.2 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.8 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -780,10 +784,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$765.95B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>15.8%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>19.4%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 10.5% × 15.8% × 19.4% = 0.32 pp</strong>
+          capture_share C = <strong>0.57</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 19.4% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 10.5% × 15.8% × 0.57 = 0.95 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -793,7 +799,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.4%</span></td><td class="pnl-num">102.4%</td><td class="pnl-num">$107.21M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.3pp</span></td><td class="pnl-num">10.2%</td><td class="pnl-num">$10.65M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">30.0%</td><td class="pnl-num">$31.42M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$5.24M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$18.85M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$2.09M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$3.67M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">12.0%</td><td class="pnl-num">$12.57M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.2 pp</span></td><td class="pnl-num">21.7%</td><td class="pnl-num">$22.73M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.4%</span></td><td class="pnl-num">101.4%</td><td class="pnl-num">$106.15M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.0pp</span></td><td class="pnl-num">9.5%</td><td class="pnl-num">$9.98M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">30.0%</td><td class="pnl-num">$31.42M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$5.24M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$18.85M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$2.09M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$3.67M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">12.0%</td><td class="pnl-num">$12.57M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.8 pp</span></td><td class="pnl-num">21.3%</td><td class="pnl-num">$22.34M</td></tr></table>
         </div>
       </div>
     </div>
@@ -801,9 +807,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">23</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">23</span>
           Construction
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.5 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.6 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -816,10 +822,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$2920.77B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>17.6%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>10.0%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 18.1% × 17.6% × 10.0% = 0.32 pp</strong>
+          capture_share C = <strong>0.36</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 10.0% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 18.1% × 17.6% × 0.36 = 1.16 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -829,7 +837,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.6%</span></td><td class="pnl-num">102.6%</td><td class="pnl-num">$3.81M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.3pp</span></td><td class="pnl-num">17.8%</td><td class="pnl-num">$662.3K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">50.0%</td><td class="pnl-num">$1.86M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$111.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$148.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$74.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$55.7K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$371.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.5 pp</span></td><td class="pnl-num">14.3%</td><td class="pnl-num">$532.1K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.0%</span></td><td class="pnl-num">101.0%</td><td class="pnl-num">$3.75M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.2pp</span></td><td class="pnl-num">17.0%</td><td class="pnl-num">$630.8K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">50.0%</td><td class="pnl-num">$1.86M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$111.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$148.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$74.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$55.7K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$371.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.6 pp</span></td><td class="pnl-num">13.5%</td><td class="pnl-num">$501.3K</td></tr></table>
         </div>
       </div>
     </div>
@@ -837,9 +845,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">31-33</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">31-33</span>
           Manufacturing
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.2 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.8 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -852,10 +860,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$7048.66B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>16.8%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>10.7%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 11.5% × 16.8% × 10.7% = 0.21 pp</strong>
+          capture_share C = <strong>0.29</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 10.7% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 11.5% × 16.8% × 0.29 = 0.57 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -865,7 +875,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.5%</span></td><td class="pnl-num">102.5%</td><td class="pnl-num">$30.03M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.2pp</span></td><td class="pnl-num">11.3%</td><td class="pnl-num">$3.32M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">60.0%</td><td class="pnl-num">$17.57M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$878.7K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.3%</td><td class="pnl-num">$1.56M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$878.7K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$732.3K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.3%</td><td class="pnl-num">$2.15M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.2 pp</span></td><td class="pnl-num">10.0%</td><td class="pnl-num">$2.94M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.7%</span></td><td class="pnl-num">100.7%</td><td class="pnl-num">$29.51M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.6pp</span></td><td class="pnl-num">11.0%</td><td class="pnl-num">$3.21M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">60.0%</td><td class="pnl-num">$17.57M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">3.0%</td><td class="pnl-num">$878.7K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.3%</td><td class="pnl-num">$1.56M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$878.7K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$732.3K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.3%</td><td class="pnl-num">$2.15M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.8 pp</span></td><td class="pnl-num">8.6%</td><td class="pnl-num">$2.52M</td></tr></table>
         </div>
       </div>
     </div>
@@ -875,7 +885,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f85149;color:#fff">42</span>
           Wholesale Trade
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.7 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.2 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -888,10 +898,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$11870.06B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>13.8%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>23.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 4.3% × 13.8% × 23.3% = 0.14 pp</strong>
+          capture_share C = <strong>0.26</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 23.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 4.3% × 13.8% × 0.26 = 0.16 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -901,7 +913,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.1%</span></td><td class="pnl-num">102.1%</td><td class="pnl-num">$45.64M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.1pp</span></td><td class="pnl-num">4.2%</td><td class="pnl-num">$1.87M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">78.0%</td><td class="pnl-num">$34.88M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">2.0%</td><td class="pnl-num">$894.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">2.0%</td><td class="pnl-num">$894.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$447.1K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$670.7K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">4.0%</td><td class="pnl-num">$1.79M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.7 pp</span></td><td class="pnl-num">9.4%</td><td class="pnl-num">$4.20M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.5%</span></td><td class="pnl-num">100.5%</td><td class="pnl-num">$44.96M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.2pp</span></td><td class="pnl-num">4.2%</td><td class="pnl-num">$1.87M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">78.0%</td><td class="pnl-num">$34.88M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">2.0%</td><td class="pnl-num">$894.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">2.0%</td><td class="pnl-num">$894.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$447.1K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$670.7K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">4.0%</td><td class="pnl-num">$1.79M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.2 pp</span></td><td class="pnl-num">7.9%</td><td class="pnl-num">$3.52M</td></tr></table>
         </div>
       </div>
     </div>
@@ -909,9 +921,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">44-45</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">44-45</span>
           Retail Trade
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.5 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.0 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -924,10 +936,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$6974.69B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>17.5%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>26.7%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 8.8% × 17.5% × 26.7% = 0.41 pp</strong>
+          capture_share C = <strong>0.13</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 26.7% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 8.8% × 17.5% × 0.13 = 0.19 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -937,7 +951,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.6%</span></td><td class="pnl-num">102.6%</td><td class="pnl-num">$11.11M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.4pp</span></td><td class="pnl-num">8.4%</td><td class="pnl-num">$905.2K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">65.0%</td><td class="pnl-num">$7.04M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">6.0%</td><td class="pnl-num">$649.7K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">2.0%</td><td class="pnl-num">$216.6K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$324.8K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$162.4K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">6.0%</td><td class="pnl-num">$649.7K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.5 pp</span></td><td class="pnl-num">10.8%</td><td class="pnl-num">$1.17M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.3%</span></td><td class="pnl-num">100.3%</td><td class="pnl-num">$10.86M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.2pp</span></td><td class="pnl-num">8.6%</td><td class="pnl-num">$928.5K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">65.0%</td><td class="pnl-num">$7.04M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">6.0%</td><td class="pnl-num">$649.7K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">2.0%</td><td class="pnl-num">$216.6K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$324.8K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$162.4K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">6.0%</td><td class="pnl-num">$649.7K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.0 pp</span></td><td class="pnl-num">8.3%</td><td class="pnl-num">$894.1K</td></tr></table>
         </div>
       </div>
     </div>
@@ -947,7 +961,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f85149;color:#fff">48-49</span>
           Transportation and Warehousing
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.6 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.1 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -960,10 +974,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$1316.30B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>9.9%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>22.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 26.0% × 9.9% × 22.3% = 0.57 pp</strong>
+          capture_share C = <strong>0.15</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 22.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 26.0% × 9.9% × 0.15 = 0.38 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -973,7 +989,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.5%</span></td><td class="pnl-num">101.5%</td><td class="pnl-num">$5.63M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.6pp</span></td><td class="pnl-num">25.4%</td><td class="pnl-num">$1.41M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">35.0%</td><td class="pnl-num">$1.94M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$277.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">12.0%</td><td class="pnl-num">$665.5K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$110.9K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$83.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$554.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.6 pp</span></td><td class="pnl-num">10.6%</td><td class="pnl-num">$585.7K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.2%</span></td><td class="pnl-num">100.2%</td><td class="pnl-num">$5.56M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.4pp</span></td><td class="pnl-num">25.6%</td><td class="pnl-num">$1.42M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">35.0%</td><td class="pnl-num">$1.94M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$277.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">12.0%</td><td class="pnl-num">$665.5K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$110.9K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$83.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$554.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.1 pp</span></td><td class="pnl-num">9.1%</td><td class="pnl-num">$504.4K</td></tr></table>
         </div>
       </div>
     </div>
@@ -981,9 +997,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#34d058;color:#0a0a0a">51</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">51</span>
           Information
-          <span class="view-verdict" style="background:#34d058;color:#0a0a0a">🟢 Strong · +4.4 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.1 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -996,10 +1012,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$2214.61B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>23.6%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>25.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 23.4% × 23.6% × 25.3% = 1.40 pp</strong>
+          capture_share C = <strong>0.17</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 25.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 23.4% × 23.6% × 0.17 = 0.96 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1009,7 +1027,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.5%</span></td><td class="pnl-num">103.5%</td><td class="pnl-num">$24.98M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.4pp</span></td><td class="pnl-num">22.0%</td><td class="pnl-num">$5.31M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$3.62M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$1.21M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">10.0%</td><td class="pnl-num">$2.41M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">8.0%</td><td class="pnl-num">$1.93M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">6.5%</td><td class="pnl-num">$1.57M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">11.0%</td><td class="pnl-num">$2.65M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +4.4 pp</span></td><td class="pnl-num">26.0%</td><td class="pnl-num">$6.28M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.6%</span></td><td class="pnl-num">100.6%</td><td class="pnl-num">$24.27M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.0pp</span></td><td class="pnl-num">22.4%</td><td class="pnl-num">$5.41M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$3.62M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$1.21M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">10.0%</td><td class="pnl-num">$2.41M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">8.0%</td><td class="pnl-num">$1.93M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">6.5%</td><td class="pnl-num">$1.57M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">11.0%</td><td class="pnl-num">$2.65M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.1 pp</span></td><td class="pnl-num">22.7%</td><td class="pnl-num">$5.47M</td></tr></table>
         </div>
       </div>
     </div>
@@ -1019,7 +1037,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">52</span>
           Finance and Insurance
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +3.9 pp</span>
+          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.4 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1032,10 +1050,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$5853.17B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>23.5%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>25.5%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 14.3% × 23.5% × 25.5% = 0.85 pp</strong>
+          capture_share C = <strong>0.42</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 25.5% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 14.3% × 23.5% × 0.42 = 1.40 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1045,7 +1065,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.5%</span></td><td class="pnl-num">103.5%</td><td class="pnl-num">$24.94M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.9pp</span></td><td class="pnl-num">13.4%</td><td class="pnl-num">$3.23M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">8.0%</td><td class="pnl-num">$1.93M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">7.0%</td><td class="pnl-num">$1.69M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$963.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$1.20M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">6.5%</td><td class="pnl-num">$1.57M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">12.0%</td><td class="pnl-num">$2.89M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +3.9 pp</span></td><td class="pnl-num">47.6%</td><td class="pnl-num">$11.47M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.5%</span></td><td class="pnl-num">101.5%</td><td class="pnl-num">$24.45M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.4pp</span></td><td class="pnl-num">12.9%</td><td class="pnl-num">$3.10M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">8.0%</td><td class="pnl-num">$1.93M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">7.0%</td><td class="pnl-num">$1.69M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$963.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$1.20M</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">6.5%</td><td class="pnl-num">$1.57M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">12.0%</td><td class="pnl-num">$2.89M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.4 pp</span></td><td class="pnl-num">46.1%</td><td class="pnl-num">$11.11M</td></tr></table>
         </div>
       </div>
     </div>
@@ -1053,9 +1073,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">53</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">53</span>
           Real Estate, Rental and Leasing
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.9 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1068,10 +1088,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$946.39B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>17.5%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>26.7%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 16.6% × 17.5% × 26.7% = 0.77 pp</strong>
+          capture_share C = <strong>0.18</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 26.7% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 16.6% × 17.5% × 0.18 = 0.54 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1081,7 +1103,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.6%</span></td><td class="pnl-num">102.6%</td><td class="pnl-num">$2.63M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.8pp</span></td><td class="pnl-num">15.8%</td><td class="pnl-num">$405.5K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$384.8K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">25.0%</td><td class="pnl-num">$641.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$461.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$77.0K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$64.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$179.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.9 pp</span></td><td class="pnl-num">16.3%</td><td class="pnl-num">$418.4K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.5%</span></td><td class="pnl-num">100.5%</td><td class="pnl-num">$2.58M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.5pp</span></td><td class="pnl-num">16.0%</td><td class="pnl-num">$411.6K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$384.8K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">25.0%</td><td class="pnl-num">$641.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">18.0%</td><td class="pnl-num">$461.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$77.0K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$64.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$179.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.5 pp</span></td><td class="pnl-num">13.9%</td><td class="pnl-num">$357.5K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1089,9 +1111,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#34d058;color:#0a0a0a">54</span>
+          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">54</span>
           Professional, Scientific, Technical Services
-          <span class="view-verdict" style="background:#34d058;color:#0a0a0a">🟢 Strong · +5.3 pp</span>
+          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.4 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1104,10 +1126,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$2667.26B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>23.8%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>24.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 38.3% × 23.8% × 24.3% = 2.21 pp</strong>
+          capture_share C = <strong>0.23</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 24.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 38.3% × 23.8% × 0.23 = 2.06 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1117,7 +1141,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.6%</span></td><td class="pnl-num">103.6%</td><td class="pnl-num">$3.15M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-2.2pp</span></td><td class="pnl-num">36.1%</td><td class="pnl-num">$1.10M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">10.0%</td><td class="pnl-num">$304.4K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$243.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">3.0%</td><td class="pnl-num">$91.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$152.2K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">4.5%</td><td class="pnl-num">$137.0K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$304.4K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +5.3 pp</span></td><td class="pnl-num">26.9%</td><td class="pnl-num">$820.1K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.8%</span></td><td class="pnl-num">100.8%</td><td class="pnl-num">$3.07M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-2.1pp</span></td><td class="pnl-num">36.3%</td><td class="pnl-num">$1.10M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">10.0%</td><td class="pnl-num">$304.4K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$243.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">3.0%</td><td class="pnl-num">$91.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$152.2K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">4.5%</td><td class="pnl-num">$137.0K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$304.4K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.4 pp</span></td><td class="pnl-num">24.0%</td><td class="pnl-num">$731.4K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1125,9 +1149,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#34d058;color:#0a0a0a">55</span>
+          <span class="view-naics" style="background:#3a3a3a;color:#fff">55</span>
           Management of Companies and Enterprises
-          <span class="view-verdict" style="background:#34d058;color:#0a0a0a">🟢 Strong · +5.5 pp</span>
+          <span class="view-verdict" style="background:#3a3a3a;color:#fff">⚫ KILL · -0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1140,10 +1164,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$117.30B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>23.7%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>25.6%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 40.0% × 23.7% × 25.6% = 2.43 pp</strong>
+          capture_share C = <strong>0.00</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 25.6% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 40.0% × 23.7% × 0.00 = 0.00 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1153,7 +1179,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.6%</span></td><td class="pnl-num">103.6%</td><td class="pnl-num">$4.31M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-2.4pp</span></td><td class="pnl-num">37.6%</td><td class="pnl-num">$1.57M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$83.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">5.5%</td><td class="pnl-num">$229.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$416.5K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +5.5 pp</span></td><td class="pnl-num">33.5%</td><td class="pnl-num">$1.39M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.0%</span></td><td class="pnl-num">100.0%</td><td class="pnl-num">$4.17M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits</td><td class="pnl-num">40.0%</td><td class="pnl-num">$1.67M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$208.3K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$83.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">5.5%</td><td class="pnl-num">$229.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$416.5K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ -0.5 pp</span></td><td class="pnl-num">27.5%</td><td class="pnl-num">$1.15M</td></tr></table>
         </div>
       </div>
     </div>
@@ -1161,9 +1187,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#0d652d;color:#fff">56</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">56</span>
           Administrative Support, Waste Management
-          <span class="view-verdict" style="background:#0d652d;color:#fff">💚 Hell-Yes · +7.5 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.0 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1176,10 +1202,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$1347.67B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>28.6%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>27.6%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 47.4% × 28.6% × 27.6% = 3.73 pp</strong>
+          capture_share C = <strong>0.08</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 27.6% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 47.4% × 28.6% × 0.08 = 1.15 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1189,7 +1217,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+4.3%</span></td><td class="pnl-num">104.3%</td><td class="pnl-num">$3.68M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-3.7pp</span></td><td class="pnl-num">43.6%</td><td class="pnl-num">$1.54M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">8.0%</td><td class="pnl-num">$282.6K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$176.6K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">3.0%</td><td class="pnl-num">$106.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$70.7K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$88.3K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$353.3K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +7.5 pp</span></td><td class="pnl-num">30.2%</td><td class="pnl-num">$1.07M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.4%</span></td><td class="pnl-num">100.4%</td><td class="pnl-num">$3.55M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.1pp</span></td><td class="pnl-num">46.2%</td><td class="pnl-num">$1.63M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">8.0%</td><td class="pnl-num">$282.6K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$176.6K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">3.0%</td><td class="pnl-num">$106.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$70.7K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$88.3K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">10.0%</td><td class="pnl-num">$353.3K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.0 pp</span></td><td class="pnl-num">23.7%</td><td class="pnl-num">$835.8K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1199,7 +1227,7 @@ header.app-header {
         <h2 class="view-title">
           <span class="view-naics" style="background:#f85149;color:#fff">61</span>
           Educational Services
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.8 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1212,10 +1240,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$89.55B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>9.8%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>26.5%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 33.2% × 9.8% × 26.5% = 0.86 pp</strong>
+          capture_share C = <strong>0.21</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 26.5% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 33.2% × 9.8% × 0.21 = 0.69 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1225,7 +1255,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.5%</span></td><td class="pnl-num">101.5%</td><td class="pnl-num">$1.10M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.9pp</span></td><td class="pnl-num">32.4%</td><td class="pnl-num">$349.5K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">5.0%</td><td class="pnl-num">$54.0K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">12.0%</td><td class="pnl-num">$129.6K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$54.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$32.4K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$37.8K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$75.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.8 pp</span></td><td class="pnl-num">33.6%</td><td class="pnl-num">$363.1K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.3%</span></td><td class="pnl-num">100.3%</td><td class="pnl-num">$1.08M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.7pp</span></td><td class="pnl-num">32.5%</td><td class="pnl-num">$351.4K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">5.0%</td><td class="pnl-num">$54.0K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">12.0%</td><td class="pnl-num">$129.6K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$54.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$32.4K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$37.8K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$75.6K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.5 pp</span></td><td class="pnl-num">32.3%</td><td class="pnl-num">$348.8K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1233,9 +1263,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">62</span>
+          <span class="view-naics" style="background:#0d652d;color:#fff">62</span>
           Health Care and Social Assistance
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +4.0 pp</span>
+          <span class="view-verdict" style="background:#0d652d;color:#fff">💚 Hell-Yes · +6.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1248,10 +1278,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$3330.30B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>18.7%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>23.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 38.3% × 18.7% × 23.3% = 1.67 pp</strong>
+          capture_share C = <strong>0.71</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 23.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 38.3% × 18.7% × 0.71 = 5.06 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1261,7 +1293,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.8%</span></td><td class="pnl-num">102.8%</td><td class="pnl-num">$4.95M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.7pp</span></td><td class="pnl-num">36.6%</td><td class="pnl-num">$1.76M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">18.0%</td><td class="pnl-num">$867.1K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">6.0%</td><td class="pnl-num">$289.0K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$192.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$96.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$168.6K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$337.2K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +4.0 pp</span></td><td class="pnl-num">25.7%</td><td class="pnl-num">$1.24M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.0%</span></td><td class="pnl-num">102.0%</td><td class="pnl-num">$4.91M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-5.1pp</span></td><td class="pnl-num">33.2%</td><td class="pnl-num">$1.60M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">18.0%</td><td class="pnl-num">$867.1K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">6.0%</td><td class="pnl-num">$289.0K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">4.0%</td><td class="pnl-num">$192.7K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">2.0%</td><td class="pnl-num">$96.3K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">3.5%</td><td class="pnl-num">$168.6K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$337.2K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +6.5 pp</span></td><td class="pnl-num">28.3%</td><td class="pnl-num">$1.36M</td></tr></table>
         </div>
       </div>
     </div>
@@ -1269,9 +1301,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">71</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">71</span>
           Arts, Entertainment, and Recreation
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +2.7 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1284,10 +1316,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$339.21B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>14.9%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>21.5%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 30.6% × 14.9% × 21.5% = 0.98 pp</strong>
+          capture_share C = <strong>0.14</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 21.5% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 30.6% × 14.9% × 0.14 = 0.66 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1297,7 +1331,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+2.2%</span></td><td class="pnl-num">102.2%</td><td class="pnl-num">$2.38M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.0pp</span></td><td class="pnl-num">29.6%</td><td class="pnl-num">$689.0K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">25.0%</td><td class="pnl-num">$580.9K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">12.0%</td><td class="pnl-num">$278.8K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">8.0%</td><td class="pnl-num">$185.9K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$116.2K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$58.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">8.0%</td><td class="pnl-num">$185.9K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +2.7 pp</span></td><td class="pnl-num">12.1%</td><td class="pnl-num">$280.8K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.3%</span></td><td class="pnl-num">100.3%</td><td class="pnl-num">$2.33M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.7pp</span></td><td class="pnl-num">30.0%</td><td class="pnl-num">$696.5K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">25.0%</td><td class="pnl-num">$580.9K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">12.0%</td><td class="pnl-num">$278.8K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">8.0%</td><td class="pnl-num">$185.9K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">5.0%</td><td class="pnl-num">$116.2K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$58.1K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">8.0%</td><td class="pnl-num">$185.9K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +0.5 pp</span></td><td class="pnl-num">9.8%</td><td class="pnl-num">$228.8K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1305,9 +1339,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f85149;color:#fff">72</span>
+          <span class="view-naics" style="background:#3a3a3a;color:#fff">72</span>
           Accommodation and Food Services
-          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.0 pp</span>
+          <span class="view-verdict" style="background:#3a3a3a;color:#fff">⚫ KILL · -0.2 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1320,10 +1354,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$1196.32B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>6.7%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>25.5%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 28.4% × 6.7% × 25.5% = 0.49 pp</strong>
+          capture_share C = <strong>0.10</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 25.5% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 28.4% × 6.7% × 0.10 = 0.19 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1333,7 +1369,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+1.0%</span></td><td class="pnl-num">101.0%</td><td class="pnl-num">$2.10M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.5pp</span></td><td class="pnl-num">27.9%</td><td class="pnl-num">$581.2K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">32.0%</td><td class="pnl-num">$665.9K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$166.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$104.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$62.4K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$31.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">6.0%</td><td class="pnl-num">$124.9K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.0 pp</span></td><td class="pnl-num">17.6%</td><td class="pnl-num">$365.8K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.1%</span></td><td class="pnl-num">100.1%</td><td class="pnl-num">$2.08M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-0.2pp</span></td><td class="pnl-num">28.2%</td><td class="pnl-num">$587.3K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">32.0%</td><td class="pnl-num">$665.9K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$166.5K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$104.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$62.4K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">1.5%</td><td class="pnl-num">$31.2K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">6.0%</td><td class="pnl-num">$124.9K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ -0.2 pp</span></td><td class="pnl-num">16.4%</td><td class="pnl-num">$340.9K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1341,9 +1377,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#f9c84a;color:#0a0a0a">81</span>
+          <span class="view-naics" style="background:#f85149;color:#fff">81</span>
           Other Services (except Public Administration)
-          <span class="view-verdict" style="background:#f9c84a;color:#0a0a0a">🟡 Conditional · +3.7 pp</span>
+          <span class="view-verdict" style="background:#f85149;color:#fff">🔴 Pass · +1.2 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1356,10 +1392,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$720.85B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>20.9%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>21.8%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 23.7% × 20.9% × 21.8% = 1.08 pp</strong>
+          capture_share C = <strong>0.21</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 21.8% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 23.7% × 20.9% × 0.21 = 1.04 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1369,7 +1407,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.1%</span></td><td class="pnl-num">103.1%</td><td class="pnl-num">$1.40M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.1pp</span></td><td class="pnl-num">22.6%</td><td class="pnl-num">$307.7K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">25.0%</td><td class="pnl-num">$340.2K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$108.9K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$68.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$40.8K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$34.0K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$95.3K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +3.7 pp</span></td><td class="pnl-num">30.0%</td><td class="pnl-num">$408.5K</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.7%</span></td><td class="pnl-num">100.7%</td><td class="pnl-num">$1.37M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.0pp</span></td><td class="pnl-num">22.7%</td><td class="pnl-num">$308.3K</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">25.0%</td><td class="pnl-num">$340.2K</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">8.0%</td><td class="pnl-num">$108.9K</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$68.0K</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">3.0%</td><td class="pnl-num">$40.8K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$34.0K</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">7.0%</td><td class="pnl-num">$95.3K</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +1.2 pp</span></td><td class="pnl-num">27.5%</td><td class="pnl-num">$374.3K</td></tr></table>
         </div>
       </div>
     </div>
@@ -1377,9 +1415,9 @@ header.app-header {
       <div class="view-header">
         <button class="back-btn" onclick="showSummary()">← Back to all sectors</button>
         <h2 class="view-title">
-          <span class="view-naics" style="background:#34d058;color:#0a0a0a">92</span>
+          <span class="view-naics" style="background:#3a3a3a;color:#fff">92</span>
           Public Administration
-          <span class="view-verdict" style="background:#34d058;color:#0a0a0a">🟢 Strong · +5.1 pp</span>
+          <span class="view-verdict" style="background:#3a3a3a;color:#fff">⚫ KILL · -0.5 pp</span>
         </h2>
       </div>
       <div class="view-meta">
@@ -1392,10 +1430,12 @@ header.app-header {
           <div class="meta-item"><div class="meta-label">Sector revenue</div><div class="meta-value">$6750.00B</div></div>
         </div>
         <div class="meta-derivation">
-          <strong>AI impact derivation (from public data):</strong>
+          <strong>AI impact derivation (from public data):</strong><br>
           productivity_effect = <strong>24.9%</strong> (GenAI Expertise weighted by sector employment) ·
-          directive_pct = <strong>25.3%</strong> (Anthropic Economic Index — AI does task autonomously) ·
-          <strong>Wage savings = wages% × productivity_effect × directive_pct = 29.6% × 24.9% × 25.3% = 1.87 pp</strong>
+          capture_share C = <strong>0.00</strong> (APQC π_dist × π_moat — what operator keeps vs leaks to AI vendor) ·
+          AEI directive_pct = 25.3% (informational — AI does task autonomously)<br>
+          <strong>Wage savings = wages% × productivity × capture_share = 29.6% × 24.9% × 0.00 = 0.00 pp</strong>
+          <br><span style="color:#888;font-size:11px">Formula fix from Exp 2 deep-dive: directive_pct was misused as proxy for operator savings; replaced with C from APQC (correct measure of value captured by operator vs leaked to AI vendor).</span>
         </div>
       </div>
       <div class="pnl-grid">
@@ -1405,7 +1445,7 @@ header.app-header {
         </div>
         <div class="pnl-card">
           <div class="pnl-card-header" style="background:#0d3320;color:#a8f0a8">P&L After AI</div>
-          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+3.7%</span></td><td class="pnl-num">103.7%</td><td class="pnl-num">$77.80M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits <span style="color:#34d058;font-size:10px;font-weight:600">-1.9pp</span></td><td class="pnl-num">27.8%</td><td class="pnl-num">$20.82M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$11.25M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$750.0K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$1.88M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ +5.1 pp</span></td><td class="pnl-num">42.5%</td><td class="pnl-num">$31.85M</td></tr></table>
+          <table class="pnl-table"><tr class="pnl-revenue pnl-modified"><td class="pnl-label"><strong>Revenue</strong> <span style="color:#34d058;font-size:10px;font-weight:600">+0.0%</span></td><td class="pnl-num">100.0%</td><td class="pnl-num">$75.00M</td></tr><tr class="pnl-modified"><td class="pnl-label">Wages & Benefits</td><td class="pnl-num">29.6%</td><td class="pnl-num">$22.22M</td></tr><tr><td class="pnl-label">COGS / Materials</td><td class="pnl-num">15.0%</td><td class="pnl-num">$11.25M</td></tr><tr><td class="pnl-label">Rent / Facilities</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr><td class="pnl-label">Depreciation</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr><td class="pnl-label">Marketing & Sales</td><td class="pnl-num">1.0%</td><td class="pnl-num">$750.0K</td></tr><tr class="pnl-modified"><td class="pnl-label">IT & Software (+AI infra) <span style="color:#f85149;font-size:10px;font-weight:600">+0.5pp</span></td><td class="pnl-num">2.5%</td><td class="pnl-num">$1.88M</td></tr><tr><td class="pnl-label">Other Operating</td><td class="pnl-num">5.0%</td><td class="pnl-num">$3.75M</td></tr><tr class="pnl-ebitda pnl-improved"><td class="pnl-label">= EBITDA <span style="color:#34d058;font-size:11px">↑ -0.5 pp</span></td><td class="pnl-num">36.9%</td><td class="pnl-num">$27.65M</td></tr></table>
         </div>
       </div>
     </div>
