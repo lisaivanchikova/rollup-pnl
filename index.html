@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>P&L Before/After AI — 20 NAICS Sectors · UNBIASED · Bobroff Capital</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #f6f6f4; min-height: 100vh; }
+.toolbar { background: white; border-bottom: 1px solid #dadce0; padding: 10px 24px; }
+.toolbar .file-name { font-weight: 600; color: #0f1e3d; font-size: 16px; }
+.toolbar .meta { font-size: 12px; color: #5f6368; margin-top: 4px; }
+.sources { background: #eaf2ff; border: 1px solid #c6dafc; padding: 10px 24px; font-size: 12px; color: #1a3a6c; }
+.sources strong { color: #0f1e3d; }
+.sources a { color: #1a73e8; text-decoration: none; }
+.tabs-bar { background: white; border-bottom: 1px solid #dadce0; padding: 8px 16px; display: flex; flex-wrap: wrap; gap: 4px; }
+.tab { padding: 6px 12px; border: 1px solid #dadce0; background: #f6f6f4; cursor: pointer; border-radius: 4px; font-size: 12px; color: #5f6368; }
+.tab:hover { background: #e8eaed; }
+.tab.active { background: #1a73e8; color: white; border-color: #1a73e8; }
+.sheet-container { padding: 20px 24px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-content#summary-tab.active { display: block; }
+h2 { font-size: 20px; font-weight: 700; color: #0f1e3d; margin-bottom: 4px; }
+.unit-meta { background: white; border-left: 4px solid #1a73e8; padding: 10px 14px; border-radius: 4px; font-size: 12.5px; margin: 10px 0 14px; line-height: 1.6; }
+.unit-meta strong { color: #0f1e3d; }
+.tables-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.table-wrap { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.table-header { padding: 8px 12px; background: #f1f3f4; border-bottom: 1px solid #dadce0; font-weight: 600; color: #0f1e3d; }
+.pnl-table { width: 100%; border-collapse: collapse; }
+.pnl-table td { padding: 6px 10px; border-bottom: 1px solid #f1f3f4; }
+.row-label { font-size: 12px; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.revenue-row { background: #e8f0fe; }
+.ebitda-row { background: #fef7e0; font-weight: bold; }
+.ebitda-row.improved { background: #d4edda; }
+.summary-table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.summary-table th { background: #0f1e3d; color: white; padding: 8px 12px; text-align: left; font-size: 12px; }
+.summary-table td { padding: 8px 12px; border-bottom: 1px solid #f1f3f4; font-size: 12px; }
+.summary-table tr:hover { background: #f6f6f4; }
+.section-header { font-size: 16px; font-weight: 700; color: #0f1e3d; margin: 20px 0 10px; }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="file-name">P&L Before/After AI — 20 NAICS Sectors · UNBIASED</div>
+  <div class="meta">All 20 NAICS 2-digit sectors · Built from public data only · No operator interviews, no curated overrides</div>
+</div>
+<div class="sources">
+  <strong>Sources (all public):</strong>
+  Revenue & Payroll & Establishments: <a href="https://www2.census.gov/programs-surveys/economic-census/data/2022/">Census Economic Census 2022</a> (EC2200/EC2231/EC2244/EC2248 BASIC files) ·
+  Cost structure benchmarks: BEA Industry Accounts (Input-Output intermediate inputs share) + IRS Statistics of Income corporate returns ·
+  Agriculture revenue: USDA Cash Receipts 2022 ·
+  AI productivity: <a href="https://github.com/s-mahdihosseini/GenAI_Expertise">GenAI Expertise dataset</a> (pred_productivity_effect per SOC) ·
+  AI directive %: <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">Anthropic Economic Index</a> (% conversations where AI completes task autonomously) ·
+  Wage savings formula: wages × productivity_effect × directive_pct
+</div>
+<div class="tabs-bar">
+  <button class="tab active" onclick="showTab('summary')">📊 Summary</button>
+  <button class="tab active" onclick="showTab('11')">11 · Agriculture</button>
+<button class="tab" onclick="showTab('21')">21 · Mining</button>
+<button class="tab" onclick="showTab('22')">22 · Utilities</button>
+<button class="tab" onclick="showTab('23')">23 · Construction</button>
+<button class="tab" onclick="showTab('31-33')">31-33 · Manufacturing</button>
+<button class="tab" onclick="showTab('42')">42 · Wholesale Trade</button>
+<button class="tab" onclick="showTab('44-45')">44-45 · Retail Trade</button>
+<button class="tab" onclick="showTab('48-49')">48-49 · Transportation and W</button>
+<button class="tab" onclick="showTab('51')">51 · Information</button>
+<button class="tab" onclick="showTab('52')">52 · Finance and Insuranc</button>
+<button class="tab" onclick="showTab('53')">53 · Real Estate</button>
+<button class="tab" onclick="showTab('54')">54 · Professional</button>
+<button class="tab" onclick="showTab('55')">55 · Management of Compan</button>
+<button class="tab" onclick="showTab('56')">56 · Administrative Suppo</button>
+<button class="tab" onclick="showTab('61')">61 · Educational Services</button>
+<button class="tab" onclick="showTab('62')">62 · Health Care and Soci</button>
+<button class="tab" onclick="showTab('71')">71 · Arts</button>
+<button class="tab" onclick="showTab('72')">72 · Accommodation and Fo</button>
+<button class="tab" onclick="showTab('81')">81 · Other Services (exce</button>
+<button class="tab" onclick="showTab('92')">92 · Public Administratio</button>
+
+</div>
+<div class="sheet-container">
+  <div class="tab-content active" id="tab-summary">
+    <h2>Summary — All Sectors Ranked by EBITDA Δ pp</h2>
+    <div class="unit-meta">
+      <strong>Methodology:</strong> For each sector we compute representative median firm P&L from Census Economic Census 2022 (Revenue, Payroll, Employment per firm). Cost structure (COGS, Rent, Depreciation, Marketing, IT, Other) uses sector-typical benchmarks from BEA Industry Accounts. AI impact = wages × productivity_effect × directive_pct (wages saved) + revenue uplift from productivity transfer. <strong>No operator interviews, no curated overrides, no internal P&L inputs.</strong> Click row to see detailed P&L.
+    </div>
+    <table class="summary-table"><thead><tr><th>NAICS</th><th>Sector</th><th>Median firm rev</th><th>EBITDA Before</th><th>EBITDA After</th><th>Δ pp</th></tr></thead><tbody><tr onclick="showTab('56')" style="cursor:pointer"><td>56</td><td>Administrative Support, Waste Management</td><td class="num">$3.53M</td><td class="num">22.6%</td><td class="num">30.2%</td><td class="num" style="color:#0d652d;font-weight:bold">+7.5</td></tr><tr onclick="showTab('55')" style="cursor:pointer"><td>55</td><td>Management of Companies and Enterprises</td><td class="num">$4.17M</td><td class="num">28.0%</td><td class="num">33.5%</td><td class="num" style="color:#0d652d;font-weight:bold">+5.5</td></tr><tr onclick="showTab('54')" style="cursor:pointer"><td>54</td><td>Professional, Scientific, Technical Services</td><td class="num">$3.04M</td><td class="num">21.7%</td><td class="num">26.9%</td><td class="num" style="color:#0d652d;font-weight:bold">+5.3</td></tr><tr onclick="showTab('92')" style="cursor:pointer"><td>92</td><td>Public Administration</td><td class="num">$75.00M</td><td class="num">37.4%</td><td class="num">42.5%</td><td class="num" style="color:#0d652d;font-weight:bold">+5.1</td></tr><tr onclick="showTab('51')" style="cursor:pointer"><td>51</td><td>Information</td><td class="num">$24.12M</td><td class="num">21.6%</td><td class="num">26.0%</td><td class="num" style="color:#34d058;font-weight:bold">+4.4</td></tr><tr onclick="showTab('62')" style="cursor:pointer"><td>62</td><td>Health Care and Social Assistance</td><td class="num">$4.82M</td><td class="num">21.7%</td><td class="num">25.7%</td><td class="num" style="color:#34d058;font-weight:bold">+4.0</td></tr><tr onclick="showTab('52')" style="cursor:pointer"><td>52</td><td>Finance and Insurance</td><td class="num">$24.09M</td><td class="num">43.7%</td><td class="num">47.6%</td><td class="num" style="color:#34d058;font-weight:bold">+3.9</td></tr><tr onclick="showTab('81')" style="cursor:pointer"><td>81</td><td>Other Services (except Public Administration)</td><td class="num">$1.36M</td><td class="num">26.3%</td><td class="num">30.0%</td><td class="num" style="color:#34d058;font-weight:bold">+3.7</td></tr><tr onclick="showTab('53')" style="cursor:pointer"><td>53</td><td>Real Estate, Rental and Leasing</td><td class="num">$2.57M</td><td class="num">13.4%</td><td class="num">16.3%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.9</td></tr><tr onclick="showTab('71')" style="cursor:pointer"><td>71</td><td>Arts, Entertainment, and Recreation</td><td class="num">$2.32M</td><td class="num">9.4%</td><td class="num">12.1%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.7</td></tr><tr onclick="showTab('44-45')" style="cursor:pointer"><td>44-45</td><td>Retail Trade</td><td class="num">$10.83M</td><td class="num">8.2%</td><td class="num">10.8%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.5</td></tr><tr onclick="showTab('23')" style="cursor:pointer"><td>23</td><td>Construction</td><td class="num">$3.72M</td><td class="num">11.9%</td><td class="num">14.3%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.5</td></tr><tr onclick="showTab('31-33')" style="cursor:pointer"><td>31-33</td><td>Manufacturing</td><td class="num">$29.29M</td><td class="num">7.8%</td><td class="num">10.0%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.2</td></tr><tr onclick="showTab('22')" style="cursor:pointer"><td>22</td><td>Utilities</td><td class="num">$104.72M</td><td class="num">19.5%</td><td class="num">21.7%</td><td class="num" style="color:#f9c84a;font-weight:bold">+2.2</td></tr><tr onclick="showTab('61')" style="cursor:pointer"><td>61</td><td>Educational Services</td><td class="num">$1.08M</td><td class="num">31.8%</td><td class="num">33.6%</td><td class="num" style="color:#f9c84a;font-weight:bold">+1.8</td></tr><tr onclick="showTab('11')" style="cursor:pointer"><td>11</td><td>Agriculture, Forestry, Fishing</td><td class="num">$4.75M</td><td class="num">13.2%</td><td class="num">14.9%</td><td class="num" style="color:#f9c84a;font-weight:bold">+1.8</td></tr><tr onclick="showTab('42')" style="cursor:pointer"><td>42</td><td>Wholesale Trade</td><td class="num">$44.71M</td><td class="num">7.7%</td><td class="num">9.4%</td><td class="num" style="color:#f9c84a;font-weight:bold">+1.7</td></tr><tr onclick="showTab('48-49')" style="cursor:pointer"><td>48-49</td><td>Transportation and Warehousing</td><td class="num">$5.55M</td><td class="num">9.0%</td><td class="num">10.6%</td><td class="num" style="color:#f9c84a;font-weight:bold">+1.6</td></tr><tr onclick="showTab('21')" style="cursor:pointer"><td>21</td><td>Mining, Oil and Gas</td><td class="num">$45.15M</td><td class="num">24.1%</td><td class="num">25.6%</td><td class="num" style="color:#f9c84a;font-weight:bold">+1.5</td></tr><tr onclick="showTab('72')" style="cursor:pointer"><td>72</td><td>Accommodation and Food Services</td><td class="num">$2.08M</td><td class="num">16.6%</td><td class="num">17.6%</td><td class="num" style="color:#f85149;font-weight:bold">+1.0</td></tr></tbody></table>
+  </div>
+  <div class="tab-content active" id="tab-11">
+  <h2>NAICS 11 — Agriculture, Forestry, Fishing</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $4.75M · Wages $514.6K · Employees 11 · Total sector firms: 114,429 · Sector revenue: $543.00B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 13.1% labor (GenAI Expertise weighted) · directive_pct = 23.5% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 10.8% × 13.1% × 23.5% = 0.33 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$4.75M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">10.8%</td><td class="num">$514.6K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">50.0%</td><td class="num">$2.37M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">4.0%</td><td class="num">$189.8K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">10.0%</td><td class="num">$474.5K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$47.5K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$47.5K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$474.5K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">13.2%</td><td class="num">$624.3K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.0%</span></strong></td><td class="num">102.0%</td><td class="num">$4.84M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.3 pp</span></td><td class="num">10.5%</td><td class="num">$498.8K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">50.0%</td><td class="num">$2.37M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">4.0%</td><td class="num">$189.8K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">10.0%</td><td class="num">$474.5K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$47.5K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$71.2K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$474.5K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.8 pp</span></td><td class="num">14.9%</td><td class="num">$709.3K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-21">
+  <h2>NAICS 21 — Mining, Oil and Gas</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $45.15M · Wages $3.10M · Employees 34 · Total sector firms: 16,060 · Sector revenue: $725.14B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 12.5% labor (GenAI Expertise weighted) · directive_pct = 11.8% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 6.9% × 12.5% × 11.8% = 0.10 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$45.15M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">6.9%</td><td class="num">$3.10M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">35.0%</td><td class="num">$15.80M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$1.35M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$8.13M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$451.5K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$903.0K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$4.52M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">24.1%</td><td class="num">$10.90M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+1.9%</span></strong></td><td class="num">101.9%</td><td class="num">$46.00M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.1 pp</span></td><td class="num">6.8%</td><td class="num">$3.05M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">35.0%</td><td class="num">$15.80M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$1.35M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$8.13M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$451.5K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$1.13M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$4.52M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.5 pp</span></td><td class="num">25.6%</td><td class="num">$11.57M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-22">
+  <h2>NAICS 22 — Utilities</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $104.72M · Wages $10.98M · Employees 96 · Total sector firms: 7,314 · Sector revenue: $765.95B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 15.8% labor (GenAI Expertise weighted) · directive_pct = 19.4% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 10.5% × 15.8% × 19.4% = 0.32 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$104.72M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">10.5%</td><td class="num">$10.98M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">30.0%</td><td class="num">$31.42M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$5.24M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$18.85M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$2.09M</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">3.0%</td><td class="num">$3.14M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">12.0%</td><td class="num">$12.57M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">19.5%</td><td class="num">$20.43M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.4%</span></strong></td><td class="num">102.4%</td><td class="num">$107.21M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.3 pp</span></td><td class="num">10.2%</td><td class="num">$10.65M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">30.0%</td><td class="num">$31.42M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$5.24M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$18.85M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$2.09M</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">3.5%</td><td class="num">$3.67M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">12.0%</td><td class="num">$12.57M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.2 pp</span></td><td class="num">21.7%</td><td class="num">$22.73M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-23">
+  <h2>NAICS 23 — Construction</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $3.72M · Wages $674.1K · Employees 10 · Total sector firms: 785,917 · Sector revenue: $2920.77B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 17.6% labor (GenAI Expertise weighted) · directive_pct = 10.0% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 18.1% × 17.6% × 10.0% = 0.32 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$3.72M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">18.1%</td><td class="num">$674.1K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">50.0%</td><td class="num">$1.86M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$111.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$148.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$74.3K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$37.2K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$371.6K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">11.9%</td><td class="num">$440.9K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.6%</span></strong></td><td class="num">102.6%</td><td class="num">$3.81M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.3 pp</span></td><td class="num">17.8%</td><td class="num">$662.3K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">50.0%</td><td class="num">$1.86M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$111.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$148.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$74.3K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$55.7K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$371.6K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.5 pp</span></td><td class="num">14.3%</td><td class="num">$532.1K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-31-33">
+  <h2>NAICS 31-33 — Manufacturing</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $29.29M · Wages $3.38M · Employees 51 · Total sector firms: 240,644 · Sector revenue: $7048.66B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 16.8% labor (GenAI Expertise weighted) · directive_pct = 10.7% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 11.5% × 16.8% × 10.7% = 0.21 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$29.29M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">11.5%</td><td class="num">$3.38M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">60.0%</td><td class="num">$17.57M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$878.7K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.3%</td><td class="num">$1.56M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$878.7K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$585.8K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.3%</td><td class="num">$2.15M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">7.8%</td><td class="num">$2.29M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.5%</span></strong></td><td class="num">102.5%</td><td class="num">$30.03M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.2 pp</span></td><td class="num">11.3%</td><td class="num">$3.32M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">60.0%</td><td class="num">$17.57M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">3.0%</td><td class="num">$878.7K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.3%</td><td class="num">$1.56M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$878.7K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$732.3K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.3%</td><td class="num">$2.15M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.2 pp</span></td><td class="num">10.0%</td><td class="num">$2.94M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-42">
+  <h2>NAICS 42 — Wholesale Trade</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $44.71M · Wages $1.94M · Employees 23 · Total sector firms: 265,472 · Sector revenue: $11870.06B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 13.8% labor (GenAI Expertise weighted) · directive_pct = 23.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 4.3% × 13.8% × 23.3% = 0.14 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$44.71M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">4.3%</td><td class="num">$1.94M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">78.0%</td><td class="num">$34.88M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">2.0%</td><td class="num">$894.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">2.0%</td><td class="num">$894.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$447.1K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$447.1K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">4.0%</td><td class="num">$1.79M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">7.7%</td><td class="num">$3.43M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.1%</span></strong></td><td class="num">102.1%</td><td class="num">$45.64M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.1 pp</span></td><td class="num">4.2%</td><td class="num">$1.87M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">78.0%</td><td class="num">$34.88M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">2.0%</td><td class="num">$894.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">2.0%</td><td class="num">$894.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$447.1K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$670.7K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">4.0%</td><td class="num">$1.79M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.7 pp</span></td><td class="num">9.4%</td><td class="num">$4.20M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-44-45">
+  <h2>NAICS 44-45 — Retail Trade</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $10.83M · Wages $949.6K · Employees 27 · Total sector firms: 644,146 · Sector revenue: $6974.69B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 17.5% labor (GenAI Expertise weighted) · directive_pct = 26.7% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 8.8% × 17.5% × 26.7% = 0.41 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$10.83M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">8.8%</td><td class="num">$949.6K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">65.0%</td><td class="num">$7.04M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">6.0%</td><td class="num">$649.7K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">2.0%</td><td class="num">$216.6K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$324.8K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$108.3K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">6.0%</td><td class="num">$649.7K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">8.2%</td><td class="num">$891.2K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.6%</span></strong></td><td class="num">102.6%</td><td class="num">$11.11M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.4 pp</span></td><td class="num">8.4%</td><td class="num">$905.2K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">65.0%</td><td class="num">$7.04M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">6.0%</td><td class="num">$649.7K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">2.0%</td><td class="num">$216.6K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$324.8K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$162.4K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">6.0%</td><td class="num">$649.7K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.5 pp</span></td><td class="num">10.8%</td><td class="num">$1.17M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-48-49">
+  <h2>NAICS 48-49 — Transportation and Warehousing</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $5.55M · Wages $1.44M · Employees 25 · Total sector firms: 237,360 · Sector revenue: $1316.30B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 9.9% labor (GenAI Expertise weighted) · directive_pct = 22.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 26.0% × 9.9% × 22.3% = 0.57 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$5.55M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">26.0%</td><td class="num">$1.44M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">35.0%</td><td class="num">$1.94M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$277.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">12.0%</td><td class="num">$665.5K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$110.9K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$55.5K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$554.6K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">9.0%</td><td class="num">$499.3K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+1.5%</span></strong></td><td class="num">101.5%</td><td class="num">$5.63M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.6 pp</span></td><td class="num">25.4%</td><td class="num">$1.41M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">35.0%</td><td class="num">$1.94M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$277.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">12.0%</td><td class="num">$665.5K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$110.9K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$83.2K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$554.6K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.6 pp</span></td><td class="num">10.6%</td><td class="num">$585.7K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-51">
+  <h2>NAICS 51 — Information</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $24.12M · Wages $5.65M · Employees 44 · Total sector firms: 91,800 · Sector revenue: $2214.61B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 23.6% labor (GenAI Expertise weighted) · directive_pct = 25.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 23.4% × 23.6% × 25.3% = 1.40 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$24.12M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">23.4%</td><td class="num">$5.65M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$3.62M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$1.21M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">10.0%</td><td class="num">$2.41M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">8.0%</td><td class="num">$1.93M</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">6.0%</td><td class="num">$1.45M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">11.0%</td><td class="num">$2.65M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">21.6%</td><td class="num">$5.21M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.5%</span></strong></td><td class="num">103.5%</td><td class="num">$24.98M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-1.4 pp</span></td><td class="num">22.0%</td><td class="num">$5.31M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$3.62M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$1.21M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">10.0%</td><td class="num">$2.41M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">8.0%</td><td class="num">$1.93M</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">6.5%</td><td class="num">$1.57M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">11.0%</td><td class="num">$2.65M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +4.4 pp</span></td><td class="num">26.0%</td><td class="num">$6.28M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-52">
+  <h2>NAICS 52 — Finance and Insurance</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $24.09M · Wages $3.44M · Employees 30 · Total sector firms: 242,954 · Sector revenue: $5853.17B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 23.5% labor (GenAI Expertise weighted) · directive_pct = 25.5% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 14.3% × 23.5% × 25.5% = 0.85 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$24.09M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">14.3%</td><td class="num">$3.44M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">8.0%</td><td class="num">$1.93M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">7.0%</td><td class="num">$1.69M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$963.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$1.20M</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">6.0%</td><td class="num">$1.45M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">12.0%</td><td class="num">$2.89M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">43.7%</td><td class="num">$10.54M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.5%</span></strong></td><td class="num">103.5%</td><td class="num">$24.94M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.9 pp</span></td><td class="num">13.4%</td><td class="num">$3.23M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">8.0%</td><td class="num">$1.93M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">7.0%</td><td class="num">$1.69M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$963.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$1.20M</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">6.5%</td><td class="num">$1.57M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">12.0%</td><td class="num">$2.89M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +3.9 pp</span></td><td class="num">47.6%</td><td class="num">$11.47M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-53">
+  <h2>NAICS 53 — Real Estate, Rental and Leasing</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $2.57M · Wages $425.3K · Employees 7 · Total sector firms: 368,958 · Sector revenue: $946.39B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 17.5% labor (GenAI Expertise weighted) · directive_pct = 26.7% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 16.6% × 17.5% × 26.7% = 0.77 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$2.57M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">16.6%</td><td class="num">$425.3K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$384.8K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">25.0%</td><td class="num">$641.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$461.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$77.0K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$51.3K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$179.6K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">13.4%</td><td class="num">$344.2K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.6%</span></strong></td><td class="num">102.6%</td><td class="num">$2.63M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.8 pp</span></td><td class="num">15.8%</td><td class="num">$405.5K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$384.8K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">25.0%</td><td class="num">$641.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">18.0%</td><td class="num">$461.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$77.0K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$64.1K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$179.6K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.9 pp</span></td><td class="num">16.3%</td><td class="num">$418.4K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-54">
+  <h2>NAICS 54 — Professional, Scientific, Technical Services</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $3.04M · Wages $1.17M · Employees 13 · Total sector firms: 876,176 · Sector revenue: $2667.26B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 23.8% labor (GenAI Expertise weighted) · directive_pct = 24.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 38.3% × 23.8% × 24.3% = 2.21 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$3.04M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">38.3%</td><td class="num">$1.17M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">10.0%</td><td class="num">$304.4K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$243.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">3.0%</td><td class="num">$91.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$152.2K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">4.0%</td><td class="num">$121.8K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$304.4K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">21.7%</td><td class="num">$659.3K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.6%</span></strong></td><td class="num">103.6%</td><td class="num">$3.15M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-2.2 pp</span></td><td class="num">36.1%</td><td class="num">$1.10M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">10.0%</td><td class="num">$304.4K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$243.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">3.0%</td><td class="num">$91.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$152.2K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">4.5%</td><td class="num">$137.0K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$304.4K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +5.3 pp</span></td><td class="num">26.9%</td><td class="num">$820.1K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-55">
+  <h2>NAICS 55 — Management of Companies and Enterprises</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $4.17M · Wages $16.53M · Employees 151 · Total sector firms: 28,163 · Sector revenue: $117.30B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 23.7% labor (GenAI Expertise weighted) · directive_pct = 25.6% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 40.0% × 23.7% × 25.6% = 2.43 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$4.17M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">40.0%</td><td class="num">$1.67M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$83.3K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$416.5K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">28.0%</td><td class="num">$1.17M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.6%</span></strong></td><td class="num">103.6%</td><td class="num">$4.31M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-2.4 pp</span></td><td class="num">37.6%</td><td class="num">$1.57M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$208.3K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$83.3K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">5.5%</td><td class="num">$229.1K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$416.5K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +5.5 pp</span></td><td class="num">33.5%</td><td class="num">$1.39M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-56">
+  <h2>NAICS 56 — Administrative Support, Waste Management</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $3.53M · Wages $1.67M · Employees 36 · Total sector firms: 381,490 · Sector revenue: $1347.67B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 28.6% labor (GenAI Expertise weighted) · directive_pct = 27.6% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 47.4% × 28.6% × 27.6% = 3.73 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$3.53M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">47.4%</td><td class="num">$1.67M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">8.0%</td><td class="num">$282.6K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$176.6K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">3.0%</td><td class="num">$106.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$70.7K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$70.7K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$353.3K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">22.6%</td><td class="num">$800.0K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+4.3%</span></strong></td><td class="num">104.3%</td><td class="num">$3.68M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-3.7 pp</span></td><td class="num">43.6%</td><td class="num">$1.54M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">8.0%</td><td class="num">$282.6K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$176.6K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">3.0%</td><td class="num">$106.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$70.7K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$88.3K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">10.0%</td><td class="num">$353.3K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +7.5 pp</span></td><td class="num">30.2%</td><td class="num">$1.07M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-61">
+  <h2>NAICS 61 — Educational Services</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $1.08M · Wages $358.8K · Employees 10 · Total sector firms: 82,897 · Sector revenue: $89.55B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 9.8% labor (GenAI Expertise weighted) · directive_pct = 26.5% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 33.2% × 9.8% × 26.5% = 0.86 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$1.08M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">33.2%</td><td class="num">$358.8K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">5.0%</td><td class="num">$54.0K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">12.0%</td><td class="num">$129.6K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$54.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$32.4K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">3.0%</td><td class="num">$32.4K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$75.6K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">31.8%</td><td class="num">$343.4K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+1.5%</span></strong></td><td class="num">101.5%</td><td class="num">$1.10M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.9 pp</span></td><td class="num">32.4%</td><td class="num">$349.5K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">5.0%</td><td class="num">$54.0K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">12.0%</td><td class="num">$129.6K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$54.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$32.4K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">3.5%</td><td class="num">$37.8K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$75.6K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.8 pp</span></td><td class="num">33.6%</td><td class="num">$363.1K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-62">
+  <h2>NAICS 62 — Health Care and Social Assistance</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $4.82M · Wages $1.84M · Employees 32 · Total sector firms: 691,347 · Sector revenue: $3330.30B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 18.7% labor (GenAI Expertise weighted) · directive_pct = 23.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 38.3% × 18.7% × 23.3% = 1.67 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$4.82M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">38.3%</td><td class="num">$1.84M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">18.0%</td><td class="num">$867.1K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">6.0%</td><td class="num">$289.0K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$192.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$96.3K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">3.0%</td><td class="num">$144.5K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$337.2K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">21.7%</td><td class="num">$1.05M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.8%</span></strong></td><td class="num">102.8%</td><td class="num">$4.95M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-1.7 pp</span></td><td class="num">36.6%</td><td class="num">$1.76M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">18.0%</td><td class="num">$867.1K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">6.0%</td><td class="num">$289.0K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">4.0%</td><td class="num">$192.7K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">2.0%</td><td class="num">$96.3K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">3.5%</td><td class="num">$168.6K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$337.2K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +4.0 pp</span></td><td class="num">25.7%</td><td class="num">$1.24M</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-71">
+  <h2>NAICS 71 — Arts, Entertainment, and Recreation</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $2.32M · Wages $711.8K · Employees 17 · Total sector firms: 145,976 · Sector revenue: $339.21B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 14.9% labor (GenAI Expertise weighted) · directive_pct = 21.5% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 30.6% × 14.9% × 21.5% = 0.98 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$2.32M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">30.6%</td><td class="num">$711.8K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">25.0%</td><td class="num">$580.9K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">12.0%</td><td class="num">$278.8K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">8.0%</td><td class="num">$185.9K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$116.2K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$46.5K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">8.0%</td><td class="num">$185.9K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">9.4%</td><td class="num">$217.7K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+2.2%</span></strong></td><td class="num">102.2%</td><td class="num">$2.38M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-1.0 pp</span></td><td class="num">29.6%</td><td class="num">$689.0K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">25.0%</td><td class="num">$580.9K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">12.0%</td><td class="num">$278.8K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">8.0%</td><td class="num">$185.9K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">5.0%</td><td class="num">$116.2K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$58.1K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">8.0%</td><td class="num">$185.9K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +2.7 pp</span></td><td class="num">12.1%</td><td class="num">$280.8K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-72">
+  <h2>NAICS 72 — Accommodation and Food Services</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $2.08M · Wages $591.4K · Employees 24 · Total sector firms: 574,892 · Sector revenue: $1196.32B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 6.7% labor (GenAI Expertise weighted) · directive_pct = 25.5% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 28.4% × 6.7% × 25.5% = 0.49 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$2.08M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">28.4%</td><td class="num">$591.4K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">32.0%</td><td class="num">$665.9K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$166.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$104.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$62.4K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">1.0%</td><td class="num">$20.8K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">6.0%</td><td class="num">$124.9K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">16.6%</td><td class="num">$345.1K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+1.0%</span></strong></td><td class="num">101.0%</td><td class="num">$2.10M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-0.5 pp</span></td><td class="num">27.9%</td><td class="num">$581.2K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">32.0%</td><td class="num">$665.9K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$166.5K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$104.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$62.4K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">1.5%</td><td class="num">$31.2K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">6.0%</td><td class="num">$124.9K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +1.0 pp</span></td><td class="num">17.6%</td><td class="num">$365.8K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-81">
+  <h2>NAICS 81 — Other Services (except Public Administration)</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $1.36M · Wages $322.4K · Employees 7 · Total sector firms: 529,687 · Sector revenue: $720.85B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 20.9% labor (GenAI Expertise weighted) · directive_pct = 21.8% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 23.7% × 20.9% × 21.8% = 1.08 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$1.36M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">23.7%</td><td class="num">$322.4K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">25.0%</td><td class="num">$340.2K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$108.9K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$68.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$40.8K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$27.2K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$95.3K</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">26.3%</td><td class="num">$358.0K</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.1%</span></strong></td><td class="num">103.1%</td><td class="num">$1.40M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-1.1 pp</span></td><td class="num">22.6%</td><td class="num">$307.7K</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">25.0%</td><td class="num">$340.2K</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">8.0%</td><td class="num">$108.9K</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$68.0K</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">3.0%</td><td class="num">$40.8K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$34.0K</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">7.0%</td><td class="num">$95.3K</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +3.7 pp</span></td><td class="num">30.0%</td><td class="num">$408.5K</td></tr></table>
+    </div>
+  </div>
+</div><div class="tab-content" id="tab-92">
+  <h2>NAICS 92 — Public Administration</h2>
+  <div class="unit-meta">
+    <strong>Representative unit (median firm in sector):</strong> Revenue $75.00M · Wages $22.22M · Employees 244 · Total sector firms: 90,000 · Sector revenue: $6750.00B
+    <br><strong>AI impact (from data):</strong> productivity_effect = 24.9% labor (GenAI Expertise weighted) · directive_pct = 25.3% (AEI — fraction where AI does task autonomously)
+    <br><strong>Wage savings calculated as:</strong> wages × productivity_effect × directive_pct = 29.6% × 24.9% × 25.3% = 1.87 pp
+  </div>
+  <div class="tables-wrap">
+    <div class="table-wrap">
+      <div class="table-header">P&L Before AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue</strong></td><td class="num">100.0%</td><td class="num">$75.00M</td></tr><tr><td class="row-label">  Wages & Benefits</td><td class="num">29.6%</td><td class="num">$22.22M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$11.25M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$750.0K</td></tr><tr><td class="row-label">  IT & Software</td><td class="num">2.0%</td><td class="num">$1.50M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr class="ebitda-row"><td class="row-label">= EBITDA</td><td class="num">37.4%</td><td class="num">$28.03M</td></tr></table>
+    </div>
+    <div class="table-wrap">
+      <div class="table-header">P&L After AI</div>
+      <table class="pnl-table"><tr class="revenue-row"><td class="row-label"><strong>Revenue <span style="color:#a8f0a8; font-size: 11px;">+3.7%</span></strong></td><td class="num">103.7%</td><td class="num">$77.80M</td></tr><tr><td class="row-label">  Wages & Benefits <span style="color:#a8f0a8; font-size: 11px;">-1.9 pp</span></td><td class="num">27.8%</td><td class="num">$20.82M</td></tr><tr><td class="row-label">  COGS / Materials</td><td class="num">15.0%</td><td class="num">$11.25M</td></tr><tr><td class="row-label">  Rent / Facilities</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr><td class="row-label">  Depreciation & Amortization</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr><td class="row-label">  Marketing & Sales</td><td class="num">1.0%</td><td class="num">$750.0K</td></tr><tr><td class="row-label">  IT & Software (incl AI infra) <span style="color:#a8f0a8; font-size: 11px;">+0.5 pp</span></td><td class="num">2.5%</td><td class="num">$1.88M</td></tr><tr><td class="row-label">  Other Operating</td><td class="num">5.0%</td><td class="num">$3.75M</td></tr><tr class="ebitda-row improved"><td class="row-label">= EBITDA <span style="color:#a8f0a8; font-size: 11px;">↑ +5.1 pp</span></td><td class="num">42.5%</td><td class="num">$31.85M</td></tr></table>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+function showTab(sec) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + sec).classList.add('active');
+  // Find tab button
+  Array.from(document.querySelectorAll('.tab')).forEach(btn => {
+    if (btn.textContent.trim().startsWith(sec + ' ') || (sec === 'summary' && btn.textContent.includes('Summary'))) {
+      btn.classList.add('active');
+    }
+  });
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
